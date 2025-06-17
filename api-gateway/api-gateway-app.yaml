@@ -8,7 +8,7 @@ spec:
   
   # 소스: Git 저장소 정보
   source:
-    repoURL: https://github.com/wkdnffla3/k8s-app-config2
+    repoURL: https://github.com/wkdnffla3/k8s-app-config2.git
     targetRevision: HEAD  # 브랜치/태그/커밋 해시
     path: api-gateway/prd
       
