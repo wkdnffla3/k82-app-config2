@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: api-gateway-config
 data:
-  application.yml: |
+  application-dev.yml: |
     server:
       port: 8080
     
