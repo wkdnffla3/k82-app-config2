@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api-gateway
+  namespace: argocd  # ArgoCD가 설치된 네임스페이스
+spec:
+  project: default
+  
+  # 소스: Git 저장소 정보
+  source:
+    repoURL: https://github.com/wkdnffla3/k8s-app-config2.git
+    targetRevision: HEAD  # 브랜치/태그/커밋 해시
+    path: api-gateway/prd
+      
+  # 대상: 배포할 클러스터
+  destination:
+    server: https://kubernetes.default.svc  # 현재 클러스터
+    namespace: default
+  
+  # 동기화 정책
+  syncPolicy:
+    automated:  # 자동 동기화 설정
+      prune: true      # Git에 없는 리소스 삭제
+      selfHeal: true   # 클러스터 상태 변경 시 자동 복구
+    
+    # 동기화 옵션
+    syncOptions:
+      - CreateNamespace=true  # 네임스페이스 자동 생성
